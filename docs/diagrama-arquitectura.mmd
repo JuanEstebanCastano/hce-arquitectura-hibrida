@@ -1,0 +1,61 @@
+---
+config:
+  theme: base
+  themeVariables:
+    primaryColor: "#f4f8fd"
+    primaryTextColor: "#0b0b0b"
+    primaryBorderColor: "#2a78d6"
+    lineColor: "#5a5953"
+    fontFamily: "DejaVu Sans, Helvetica, sans-serif"
+    fontSize: 26px
+  flowchart:
+    curve: basis
+    nodeSpacing: 36
+    rankSpacing: 48
+    padding: 22
+---
+flowchart TB
+
+FUENTES["① Fuentes: admisiones · monitores de UCI · wearables · teleconsulta"]
+
+API["② API clínica y cola de eventos<br/>resuelve la identidad antes de aceptar el evento"]
+
+subgraph ACID["③ Capa ACID · PostgreSQL 16"]
+  direction LR
+  PAC[("paciente<br/>uuid_paciente")]
+  ADMI[("admision<br/>uuid_admision")]
+  MAE[("maestros: sede · cama<br/>profesional · CIE-10")]
+  AUD[("dispositivo y<br/>auditoria_egreso")]
+  PAC --> ADMI
+  MAE --> ADMI
+  ADMI --> AUD
+end
+
+subgraph BASE["④ Capa BASE · MongoDB 8.0"]
+  direction LR
+  TELE[("telemetria · 1.008.000 docs")]
+  EVE[("eventos_clinicos · 150.000 docs")]
+  TCON[("teleconsultas · 5.000 docs")]
+end
+
+CONS["⑤ Consumo: tablero de UCI · Power BI · historia clínica"]
+
+FUENTES --> API
+API ==>|"transaccional<br/>(sincrónico)"| ACID
+API ==>|"insert_many por lotes<br/>de 5.000 (w:1)"| BASE
+ACID -. "uuid_admision y uuid_paciente<br/>LLAVES PUENTE" .-> BASE
+ACID --> CONS
+BASE --> CONS
+
+classDef acid fill:#e8f1fc,stroke:#2a78d6,stroke-width:2px,color:#0b0b0b;
+classDef base fill:#fdeee7,stroke:#eb6834,stroke-width:2px,color:#0b0b0b;
+classDef flujo fill:#f3f3f1,stroke:#8a8983,stroke-width:2px,color:#0b0b0b;
+classDef consumo fill:#e7f7f1,stroke:#1baf7a,stroke-width:2px,color:#0b0b0b;
+
+class PAC,ADMI,MAE,AUD acid;
+class TELE,EVE,TCON base;
+class FUENTES,API flujo;
+class CONS consumo;
+
+style ACID fill:#f7fbff,stroke:#2a78d6,stroke-width:2px
+style BASE fill:#fffaf7,stroke:#eb6834,stroke-width:2px

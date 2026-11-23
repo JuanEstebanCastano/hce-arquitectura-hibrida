@@ -1,0 +1,269 @@
+{
+  "ejecutado_en": "2026-11-22T02:59:12.923641-05:00",
+  "entorno": {
+    "postgresql": 160015,
+    "mongodb": "8.0.23",
+    "cpus": 2,
+    "registros_telemetria": 1008000
+  },
+  "mediciones": [
+    {
+      "operacion": "Ingesta lote 5.000 lecturas",
+      "motor": "PostgreSQL",
+      "p50_ms": 75.463,
+      "p95_ms": 90.635,
+      "p99_ms": 92.73,
+      "media_ms": 77.518,
+      "repeticiones": 30,
+      "unidad": "ms",
+      "nota": "INSERT multi-fila (execute_values) en tabla permanente: WAL + MVCC, commit por lote"
+    },
+    {
+      "operacion": "Ingesta lote 5.000 lecturas",
+      "motor": "MongoDB",
+      "p50_ms": 37.595,
+      "p95_ms": 52.573,
+      "p99_ms": 58.196,
+      "media_ms": 40.462,
+      "repeticiones": 30,
+      "unidad": "ms",
+      "nota": "insert_many ordered=False en colección normal, writeConcern w:1 j:false"
+    },
+    {
+      "operacion": "Ingesta lote 5.000 (COPY nativo)",
+      "motor": "PostgreSQL",
+      "p50_ms": 13.809,
+      "p95_ms": 15.384,
+      "p99_ms": 15.968,
+      "media_ms": 14.01,
+      "repeticiones": 30,
+      "unidad": "ms",
+      "nota": "Vía optimizada: sin parseo de INSERT fila a fila"
+    },
+    {
+      "operacion": "Últimas 50 lecturas de una admisión",
+      "motor": "PostgreSQL",
+      "p50_ms": 0.116,
+      "p95_ms": 0.162,
+      "p99_ms": 0.183,
+      "media_ms": 0.126,
+      "repeticiones": 30,
+      "unidad": "ms",
+      "nota": ""
+    },
+    {
+      "operacion": "Últimas 50 lecturas de una admisión",
+      "motor": "MongoDB",
+      "p50_ms": 0.355,
+      "p95_ms": 0.421,
+      "p99_ms": 0.422,
+      "media_ms": 0.361,
+      "repeticiones": 30,
+      "unidad": "ms",
+      "nota": ""
+    },
+    {
+      "operacion": "Alarmas últimas 6 h (índice parcial)",
+      "motor": "PostgreSQL",
+      "p50_ms": 27.079,
+      "p95_ms": 28.09,
+      "p99_ms": 28.094,
+      "media_ms": 26.981,
+      "repeticiones": 30,
+      "unidad": "ms",
+      "nota": ""
+    },
+    {
+      "operacion": "Alarmas últimas 6 h (índice parcial)",
+      "motor": "MongoDB",
+      "p50_ms": 185.716,
+      "p95_ms": 189.598,
+      "p99_ms": 190.419,
+      "media_ms": 186.379,
+      "repeticiones": 30,
+      "unidad": "ms",
+      "nota": ""
+    },
+    {
+      "operacion": "Tendencia horaria de una admisión",
+      "motor": "PostgreSQL",
+      "p50_ms": 0.546,
+      "p95_ms": 0.583,
+      "p99_ms": 0.595,
+      "media_ms": 0.551,
+      "repeticiones": 30,
+      "unidad": "ms",
+      "nota": ""
+    },
+    {
+      "operacion": "Tendencia horaria de una admisión",
+      "motor": "MongoDB",
+      "p50_ms": 7.987,
+      "p95_ms": 9.137,
+      "p99_ms": 9.221,
+      "media_ms": 8.119,
+      "repeticiones": 30,
+      "unidad": "ms",
+      "nota": ""
+    },
+    {
+      "operacion": "Top-10 admisiones por alarmas (dataset completo)",
+      "motor": "PostgreSQL",
+      "p50_ms": 42.64,
+      "p95_ms": 43.344,
+      "p99_ms": 43.344,
+      "media_ms": 43.595,
+      "repeticiones": 10,
+      "unidad": "ms",
+      "nota": ""
+    },
+    {
+      "operacion": "Top-10 admisiones por alarmas (dataset completo)",
+      "motor": "MongoDB",
+      "p50_ms": 789.174,
+      "p95_ms": 798.455,
+      "p99_ms": 798.455,
+      "media_ms": 789.768,
+      "repeticiones": 10,
+      "unidad": "ms",
+      "nota": ""
+    },
+    {
+      "operacion": "Tablero UCI: 20 camas con último signo vital",
+      "motor": "Híbrido PG+Mongo",
+      "p50_ms": 170.924,
+      "p95_ms": 182.711,
+      "p99_ms": 184.78,
+      "media_ms": 175.762,
+      "repeticiones": 30,
+      "unidad": "ms",
+      "nota": "2 round-trips: 1 a PG + 1 pipeline $group sobre $in"
+    },
+    {
+      "operacion": "Tablero UCI — orquestación optimizada",
+      "motor": "Híbrido PG+Mongo",
+      "p50_ms": 7.12,
+      "p95_ms": 7.846,
+      "p99_ms": 8.028,
+      "media_ms": 7.22,
+      "repeticiones": 30,
+      "unidad": "ms",
+      "nota": "21 round-trips cortos resueltos por ix_adm_tiempo, sin agregación"
+    },
+    {
+      "operacion": "Añadir 2 campos nuevos (DDL)",
+      "motor": "PostgreSQL",
+      "p50_ms": 0.845,
+      "p95_ms": 0.845,
+      "p99_ms": 0.845,
+      "media_ms": 0.845,
+      "repeticiones": 1,
+      "unidad": "ms",
+      "nota": "ALTER TABLE ADD COLUMN NULL: solo catálogo, sin reescritura"
+    },
+    {
+      "operacion": "Backfill del campo nuevo (1 admisión)",
+      "motor": "PostgreSQL",
+      "p50_ms": 6.984,
+      "p95_ms": 6.984,
+      "p99_ms": 6.984,
+      "media_ms": 6.984,
+      "repeticiones": 1,
+      "unidad": "ms",
+      "nota": "UPDATE de 1,800 filas: reescritura de tuplas (MVCC)"
+    },
+    {
+      "operacion": "Aceptar 2 campos nuevos (sin DDL)",
+      "motor": "MongoDB",
+      "p50_ms": 1.44,
+      "p95_ms": 1.44,
+      "p99_ms": 1.44,
+      "media_ms": 1.44,
+      "repeticiones": 1,
+      "unidad": "ms",
+      "nota": "Sin DDL: 100 documentos con forma nueva conviven con los anteriores"
+    },
+    {
+      "operacion": "Egreso (4 tablas en 1 transacción)",
+      "motor": "PostgreSQL",
+      "p50_ms": 0.3,
+      "p95_ms": 0.485,
+      "p99_ms": 0.538,
+      "media_ms": 0.333,
+      "repeticiones": 30,
+      "unidad": "ms",
+      "nota": "ACID: UPDATE admision + cama + dispositivo + INSERT auditoría, todo o nada"
+    },
+    {
+      "operacion": "Alarmas últimas 6 h — índice cobertura v1",
+      "motor": "PostgreSQL",
+      "p50_ms": 24.586,
+      "p95_ms": 25.341,
+      "p99_ms": 25.53,
+      "media_ms": 24.738,
+      "repeticiones": 30,
+      "unidad": "ms",
+      "nota": "Índice parcial (medido_en, uuid_admision) WHERE alarma"
+    },
+    {
+      "operacion": "Alarmas últimas 6 h — índice cobertura v1",
+      "motor": "MongoDB",
+      "p50_ms": 41.254,
+      "p95_ms": 42.09,
+      "p99_ms": 42.198,
+      "media_ms": 41.25,
+      "repeticiones": 30,
+      "unidad": "ms",
+      "nota": "ix_cobertura_alarmas {alarma, medido_en, uuid_admision}: consulta cubierta"
+    },
+    {
+      "operacion": "Top-10 por alarmas — índice cobertura v1",
+      "motor": "PostgreSQL",
+      "p50_ms": 44.749,
+      "p95_ms": 45.94,
+      "p99_ms": 45.94,
+      "media_ms": 45.029,
+      "repeticiones": 10,
+      "unidad": "ms",
+      "nota": "El planeador SÍ usa el índice (Parallel Index Only Scan) y aun así no gana: 33 % de selectividad"
+    },
+    {
+      "operacion": "Top-10 por alarmas — índice cobertura v1",
+      "motor": "MongoDB",
+      "p50_ms": 1136.669,
+      "p95_ms": 1164.673,
+      "p99_ms": 1164.673,
+      "media_ms": 1131.119,
+      "repeticiones": 10,
+      "unidad": "ms",
+      "nota": "Índice mal ordenado para el $group: EMPEORA respecto al COLLSCAN"
+    },
+    {
+      "operacion": "Top-10 por alarmas — índice cobertura v2",
+      "motor": "MongoDB",
+      "p50_ms": 563.602,
+      "p95_ms": 596.663,
+      "p99_ms": 596.663,
+      "media_ms": 569.617,
+      "repeticiones": 10,
+      "unidad": "ms",
+      "nota": "ix_alarma_adm {alarma, uuid_admision}: PROJECTION_COVERED, sin FETCH"
+    }
+  ],
+  "almacenamiento": {
+    "PostgreSQL": {
+      "datos_MB": 93.8,
+      "indices_MB": 98.6,
+      "total_MB": 192.5,
+      "registros": 1008000
+    },
+    "MongoDB": {
+      "datos_MB": 255.7,
+      "datos_comprimidos_MB": 45.7,
+      "indices_MB": 26.6,
+      "total_MB": 72.3,
+      "registros": 1008000
+    }
+  },
+  "transaccion_mongo": "RECHAZADA por el motor: OperationFailure: Transaction numbers are only allowed on a replica set member or mongos, full error: {'ok': 0.0, 'errmsg': 'Transaction numbers are only allowed on a replica set member or mongos', 'code': 20, 'codeNam — las tres escrituras del egreso no pueden agruparse atómicamente en un despliegue de nodo único."
+}

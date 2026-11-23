@@ -1,0 +1,358 @@
+Admisión de demostración: d47b820a-dffe-4919-ac22-b8e2642e6a2b
+Documentos en telemetria: 1008100
+[
+  {
+    medido_en: ISODate('2026-11-22T07:58:43.431Z'),
+    signos: {}
+  },
+  {
+    medido_en: ISODate('2026-11-22T07:58:43.431Z'),
+    signos: {}
+  },
+  {
+    medido_en: ISODate('2026-11-22T07:58:43.431Z'),
+    signos: {}
+  },
+  {
+    medido_en: ISODate('2026-11-22T07:58:43.431Z'),
+    signos: {}
+  },
+  {
+    medido_en: ISODate('2026-11-22T07:58:43.431Z'),
+    signos: {}
+  }
+]
+{
+  executionSuccess: true,
+  nReturned: 50,
+  executionTimeMillis: 0,
+  totalKeysExamined: 50,
+  totalDocsExamined: 50,
+  executionStages: {
+    isCached: false,
+    stage: 'LIMIT',
+    nReturned: 50,
+    executionTimeMillisEstimate: 0,
+    works: 51,
+    advanced: 50,
+    needTime: 0,
+    needYield: 0,
+    saveState: 0,
+    restoreState: 0,
+    isEOF: 1,
+    limitAmount: 50,
+    inputStage: {
+      stage: 'FETCH',
+      nReturned: 50,
+      executionTimeMillisEstimate: 0,
+      works: 50,
+      advanced: 50,
+      needTime: 0,
+      needYield: 0,
+      saveState: 0,
+      restoreState: 0,
+      isEOF: 0,
+      docsExamined: 50,
+      alreadyHasObj: 0,
+      inputStage: {
+        stage: 'IXSCAN',
+        nReturned: 50,
+        executionTimeMillisEstimate: 0,
+        works: 50,
+        advanced: 50,
+        needTime: 0,
+        needYield: 0,
+        saveState: 0,
+        restoreState: 0,
+        isEOF: 0,
+        keyPattern: {
+          uuid_admision: 1,
+          medido_en: -1
+        },
+        indexName: 'ix_adm_tiempo',
+        isMultiKey: false,
+        multiKeyPaths: {
+          uuid_admision: [],
+          medido_en: []
+        },
+        isUnique: false,
+        isSparse: false,
+        isPartial: false,
+        indexVersion: 2,
+        direction: 'forward',
+        indexBounds: {
+          uuid_admision: [
+            '["d47b820a-dffe-4919-ac22-b8e2642e6a2b", "d47b820a-dffe-4919-ac22-b8e2642e6a2b"]'
+          ],
+          medido_en: [
+            '[MaxKey, MinKey]'
+          ]
+        },
+        keysExamined: 50,
+        seeks: 1,
+        dupsTested: 0,
+        dupsDropped: 0
+      }
+    }
+  }
+}
+[]
+[
+  {
+    _id: ISODate('2026-11-20T11:00:00.000Z'),
+    fc_promedio: 68.61864406779661,
+    fc_maxima: 85,
+    spo2_minima: 94,
+    spo2_promedio: 96.76271186440678,
+    alarmas: 0
+  },
+  {
+    _id: ISODate('2026-11-20T12:00:00.000Z'),
+    fc_promedio: 69.65833333333333,
+    fc_maxima: 86,
+    spo2_minima: 94,
+    spo2_promedio: 96.625,
+    alarmas: 0
+  },
+  {
+    _id: ISODate('2026-11-20T13:00:00.000Z'),
+    fc_promedio: 69.78333333333333,
+    fc_maxima: 86,
+    spo2_minima: 94,
+    spo2_promedio: 96.28333333333333,
+    alarmas: 0
+  },
+  {
+    _id: ISODate('2026-11-20T14:00:00.000Z'),
+    fc_promedio: 69.99166666666666,
+    fc_maxima: 84,
+    spo2_minima: 94,
+    spo2_promedio: 96.04166666666667,
+    alarmas: 0
+  },
+  {
+    _id: ISODate('2026-11-20T15:00:00.000Z'),
+    fc_promedio: 71.18333333333334,
+    fc_maxima: 86,
+    spo2_minima: 93,
+    spo2_promedio: 95.89166666666667,
+    alarmas: 0
+  }
+]
+[
+  {
+    _id: 'e7d74339-17ae-44ae-ab9a-a602b9bbc2cd',
+    alarmas: 1671
+  },
+  {
+    _id: '69ddc012-951e-4c0a-852c-59e285c76113',
+    alarmas: 1663
+  },
+  {
+    _id: 'aa2467fe-04ec-43eb-b5dd-3d0340ce9a88',
+    alarmas: 1659
+  },
+  {
+    _id: '8b860404-6709-47df-8bed-158a605bde5b',
+    alarmas: 1658
+  },
+  {
+    _id: '94f959a3-ef3b-492f-bcbf-f7cc902b3a83',
+    alarmas: 1655
+  },
+  {
+    _id: 'fc2fe5ab-4fb7-42bf-be41-4e68df05e9d8',
+    alarmas: 1655
+  },
+  {
+    _id: 'c216585f-aaec-425b-a09a-9985d99be282',
+    alarmas: 1651
+  },
+  {
+    _id: '03ff6b3e-ca38-4d85-aafe-193e7eae4d6b',
+    alarmas: 1650
+  },
+  {
+    _id: 'ab467cb6-aebc-44cc-8940-827179319ad7',
+    alarmas: 1650
+  },
+  {
+    _id: 'c033b1c2-6576-443d-a2b4-a29e72db47ae',
+    alarmas: 1649
+  }
+]
+[
+  {
+    uuid_admision: '018942a6-e906-4d4d-b939-7b48cd868f25',
+    medido_en: ISODate('2026-11-21T02:01:25.000Z'),
+    signos: {
+      fc: 84,
+      fr: 21,
+      spo2: 92,
+      temp_c: 37.1,
+      pas: 128,
+      pad: 61
+    },
+    alarma: false
+  },
+  {
+    uuid_admision: '01a3878e-9438-4367-b712-cc5962d3524b',
+    medido_en: ISODate('2026-11-21T02:00:35.000Z'),
+    signos: {
+      fc: 59,
+      fr: 10,
+      spo2: 100,
+      temp_c: 35.9,
+      pas: 123,
+      pad: 84
+    },
+    alarma: false
+  },
+  {
+    uuid_admision: '01ff3bf8-9425-49e6-878d-b5de1033675e',
+    medido_en: ISODate('2026-11-21T02:06:09.000Z'),
+    signos: {
+      fc: 65,
+      fr: 25,
+      spo2: 90,
+      temp_c: 37.3,
+      pas: 139,
+      pad: 77
+    },
+    alarma: false
+  }
+]
+Documentos con el campo nuevo signos.glucosa_mgdl: 101
+[
+  {
+    _id: 'MEDIA',
+    n: 17937,
+    respuesta_prom_seg: 304.1930088643586,
+    respuesta_p_max: 600
+  },
+  {
+    _id: 'CRITICA',
+    n: 7512,
+    respuesta_prom_seg: 303.00439297124603,
+    respuesta_p_max: 600
+  },
+  {
+    _id: 'BAJA',
+    n: 25650,
+    respuesta_prom_seg: 302.4982456140351,
+    respuesta_p_max: 600
+  }
+]
+[
+  {
+    _id: {
+      medicamento: 'Noradrenalina',
+      via: 'IV'
+    },
+    administraciones: 6596,
+    doble_verificacion: 0.7057307459066101
+  },
+  {
+    _id: {
+      medicamento: 'Acetaminofén',
+      via: 'VO'
+    },
+    administraciones: 6569,
+    doble_verificacion: 0.7031511645608159
+  },
+  {
+    _id: {
+      medicamento: 'Vancomicina',
+      via: 'IV'
+    },
+    administraciones: 6515,
+    doble_verificacion: 0.6974673829623945
+  },
+  {
+    _id: {
+      medicamento: 'Furosemida',
+      via: 'IV'
+    },
+    administraciones: 6467,
+    doble_verificacion: 0.7004793567341889
+  },
+  {
+    _id: {
+      medicamento: 'Enoxaparina',
+      via: 'SC'
+    },
+    administraciones: 6461,
+    doble_verificacion: 0.6930815663210029
+  },
+  {
+    _id: {
+      medicamento: 'Cefepime',
+      via: 'IV'
+    },
+    administraciones: 6379,
+    doble_verificacion: 0.7062235460103464
+  }
+]
+[
+  {
+    _id: 'FHIR',
+    errores: 4083,
+    reintentos_prom: 4.533921136419299,
+    checksum_ok_pct: 59.00073475385746
+  },
+  {
+    _id: 'MQTT',
+    errores: 3965,
+    reintentos_prom: 4.414880201765448,
+    checksum_ok_pct: 61.31147540983606
+  },
+  {
+    _id: 'HL7v2',
+    errores: 3880,
+    reintentos_prom: 4.512113402061856,
+    checksum_ok_pct: 59.97422680412371
+  }
+]
+[
+  {
+    _id: 'VIDEO',
+    consultas: 1697,
+    duracion_prom_min: 20.70477312905127,
+    jitter_prom_ms: 92.75839717147907,
+    turnos_transcritos_prom: 6.072480848556276,
+    con_cuidador: 689
+  },
+  {
+    _id: 'AUDIO',
+    consultas: 1667,
+    duracion_prom_min: 20.40851829634073,
+    jitter_prom_ms: 90.61067786442712,
+    turnos_transcritos_prom: 6.01499700059988,
+    con_cuidador: 684
+  },
+  {
+    _id: 'CHAT',
+    consultas: 1636,
+    duracion_prom_min: 20.521393643031786,
+    jitter_prom_ms: 92.53789731051344,
+    turnos_transcritos_prom: 6.000611246943765,
+    con_cuidador: 646
+  }
+]
+[
+  {
+    motivo: 'Control post-egreso',
+    iniciada_en: ISODate('2026-11-17T02:31:54.440Z'),
+    score: 8.4
+  },
+  {
+    motivo: 'Resultado de laboratorio',
+    iniciada_en: ISODate('2026-10-02T19:22:54.697Z'),
+    score: 7.2
+  },
+  {
+    motivo: 'Control de hipertensión',
+    iniciada_en: ISODate('2026-10-21T19:27:54.757Z'),
+    score: 7.2
+  }
+]

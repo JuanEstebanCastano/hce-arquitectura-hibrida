@@ -1,0 +1,443 @@
+
+==============================================================================
+OP-2 PostgreSQL — EXPLAIN ANALYZE
+==============================================================================
+Limit  (cost=0.42..188.66 rows=50 width=16) (actual time=0.026..0.037 rows=50 loops=1)
+  Buffers: shared hit=2 read=3
+  ->  Index Scan using ix_tel_adm_tiempo on telemetria_signos  (cost=0.42..6743.07 rows=1791 width=16) (actual time=0.025..0.033 rows=50 loops=1)
+        Index Cond: (uuid_admision = 'd47b820a-dffe-4919-ac22-b8e2642e6a2b'::uuid)
+        Buffers: shared hit=2 read=3
+Planning Time: 0.060 ms
+Execution Time: 0.047 ms
+
+==============================================================================
+OP-2 MongoDB — explain executionStats
+==============================================================================
+{
+  "stage": {
+    "isCached": false,
+    "stage": "LIMIT",
+    "limitAmount": 50,
+    "inputStage": {
+      "stage": "FETCH",
+      "inputStage": {
+        "stage": "IXSCAN",
+        "keyPattern": {
+          "uuid_admision": 1,
+          "medido_en": -1
+        },
+        "indexName": "ix_adm_tiempo",
+        "isMultiKey": false,
+        "multiKeyPaths": {
+          "uuid_admision": [],
+          "medido_en": []
+        },
+        "isUnique": false,
+        "isSparse": false,
+        "isPartial": false,
+        "indexVersion": 2,
+        "direction": "forward",
+        "indexBounds": {
+          "uuid_admision": [
+            "[\"d47b820a-dffe-4919-ac22-b8e2642e6a2b\", \"d47b820a-dffe-4919-ac22-b8e2642e6a2b\"]"
+          ],
+          "medido_en": [
+            "[MaxKey, MinKey]"
+          ]
+        }
+      }
+    }
+  },
+  "exec": {
+    "nReturned": 50,
+    "executionTimeMillis": 0,
+    "totalKeysExamined": 50,
+    "totalDocsExamined": 50
+  }
+}
+
+==============================================================================
+OP-4 PostgreSQL — EXPLAIN ANALYZE
+==============================================================================
+Sort  (cost=4988.83..4993.24 rows=1762 width=42) (actual time=0.529..0.531 rows=16 loops=1)
+  Sort Key: (date_trunc('hour'::text, medido_en))
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=40
+  ->  HashAggregate  (cost=4867.40..4893.83 rows=1762 width=42) (actual time=0.515..0.522 rows=16 loops=1)
+        Group Key: date_trunc('hour'::text, medido_en)
+        Batches: 1  Memory Usage: 73kB
+        Buffers: shared hit=40
+        ->  Bitmap Heap Scan on telemetria_signos  (cost=78.31..4853.97 rows=1791 width=10) (actual time=0.078..0.363 rows=1800 loops=1)
+              Recheck Cond: (uuid_admision = 'd47b820a-dffe-4919-ac22-b8e2642e6a2b'::uuid)
+              Heap Blocks: exact=21
+              Buffers: shared hit=40
+              ->  Bitmap Index Scan on ix_tel_adm_tiempo  (cost=0.00..77.86 rows=1791 width=0) (actual time=0.061..0.062 rows=1800 loops=1)
+                    Index Cond: (uuid_admision = 'd47b820a-dffe-4919-ac22-b8e2642e6a2b'::uuid)
+                    Buffers: shared hit=19
+Planning Time: 0.120 ms
+Execution Time: 0.571 ms
+
+==============================================================================
+OP-3 PostgreSQL — EXPLAIN ANALYZE (línea base)
+==============================================================================
+Aggregate  (cost=29023.65..29023.66 rows=1 width=16) (actual time=49.581..49.583 rows=1 loops=1)
+  Buffers: shared hit=4100, temp read=327 written=328
+  ->  Sort  (cost=28057.32..28379.43 rows=128844 width=16) (actual time=36.196..43.540 rows=133216 loops=1)
+        Sort Key: uuid_admision
+        Sort Method: external merge  Disk: 2616kB
+        Buffers: shared hit=4100, temp read=327 written=328
+        ->  Bitmap Heap Scan on telemetria_signos  (cost=1850.96..14916.51 rows=128844 width=16) (actual time=4.384..22.643 rows=133216 loops=1)
+              Recheck Cond: ((medido_en >= '2026-11-20 15:09:30-05'::timestamp with time zone) AND alarma)
+              Heap Blocks: exact=3869
+              Buffers: shared hit=4100
+              ->  Bitmap Index Scan on ix_tel_alarmas  (cost=0.00..1818.75 rows=128844 width=0) (actual time=4.017..4.018 rows=133216 loops=1)
+                    Index Cond: (medido_en >= '2026-11-20 15:09:30-05'::timestamp with time zone)
+                    Buffers: shared hit=231
+Planning Time: 0.104 ms
+Execution Time: 50.183 ms
+
+==============================================================================
+OP-3 MongoDB — explain (línea base)
+==============================================================================
+{
+  "namespace": "hce_antioquia.telemetria",
+  "parsedQuery": {
+    "$and": [
+      {
+        "alarma": {
+          "$eq": true
+        }
+      },
+      {
+        "medido_en": {
+          "$gte": "2026-11-20 20:09:30"
+        }
+      }
+    ]
+  },
+  "indexFilterSet": false,
+  "queryHash": "7E723B77",
+  "planCacheShapeHash": "7E723B77",
+  "planCacheKey": "B87DE5A7",
+  "optimizationTimeMillis": 0,
+  "optimizedPipeline": true,
+  "maxIndexedOrSolutionsReached": false,
+  "maxIndexedAndSolutionsReached": false,
+  "maxScansToExplodeReached": false,
+  "prunedSimilarIndexes": false,
+  "winningPlan": {
+    "isCached": false,
+    "queryPlan": {
+      "stage": "GROUP",
+      "planNodeId": 4,
+      "inputStage": {
+        "stage": "FETCH",
+        "planNodeId": 2,
+        "inputStage": {
+          "stage": "IXSCAN",
+          "planNodeId": 1,
+          "keyPattern": {
+            "medido_en": -1
+          },
+          "indexName": "ix_alarmas",
+          "isMultiKey": false,
+          "multiKeyPaths": {
+            "medido_en": []
+          },
+          "isUnique": false,
+          "isSparse": false,
+          "isPartial": true,
+          "indexVersion": 2,
+          "direction": "forward",
+          "indexBounds": {
+            "medido_en": [
+              "[new Date(9223372036854775807), new Date(1795205370000)]"
+            ]
+          }
+        }
+      }
+    },
+    "slotBasedPlan": {
+      "slots": "$$RESULT=s16 env: { s5 = {\"medido_en\" : -1} }",
+      "stages": "[4] project [s16 = newBsonObj(\"_id\", s13, \"n\", s14, \"adm\", s15)] \n[4] project [s13 = null, s14 = (convert ( s11, int32) ?: s11), s15 = getElement(s12, 0)] \n[4] group [] [s11 = count(), s12 = addToSetCapped(s8, 104857600)] spillSlots[s9, s10] mergingExprs[sum(s9), aggSetUnionCapped(s10, 104857600)] \n[2] nlj inner [] [s1, s2, s3, s4, s5] \n    left \n        [1] ixseek KS(8700000000000000000104) KS(877FFFFE5E056BEF6FFE04) s4 s1 s2 s3 [] @\"d24e2514-9e75-4869-b9e6-5aa5aeb3e386\" @\"ix_alarmas\" true \n    right \n        [2] limit 1ll \n        [2] seek s1 s6 s7 s2 s3 s4 s5 none none [s8 = uuid_admision] @\"d24e2514-9e75-4869-b9e6-5aa5aeb3e386\" true false \n"
+    }
+  },
+  "rejectedPlans": []
+}
+
+==============================================================================
+OP-5 PostgreSQL — EXPLAIN ANALYZE (línea base)
+==============================================================================
+Limit  (cost=17523.71..17523.74 rows=10 width=24) (actual time=52.962..53.012 rows=10 loops=1)
+  Buffers: shared hit=10163 read=1306
+  ->  Sort  (cost=17523.71..17525.11 rows=560 width=24) (actual time=52.960..53.009 rows=10 loops=1)
+        Sort Key: (count(*)) DESC
+        Sort Method: top-N heapsort  Memory: 26kB
+        Buffers: shared hit=10163 read=1306
+        ->  Finalize GroupAggregate  (cost=17369.74..17511.61 rows=560 width=24) (actual time=52.655..52.963 rows=538 loops=1)
+              Group Key: uuid_admision
+              Buffers: shared hit=10163 read=1306
+              ->  Gather Merge  (cost=17369.74..17500.41 rows=1120 width=24) (actual time=52.645..52.859 rows=1017 loops=1)
+                    Workers Planned: 2
+                    Workers Launched: 2
+                    Buffers: shared hit=10163 read=1306
+                    ->  Sort  (cost=16369.71..16371.11 rows=560 width=24) (actual time=46.448..46.471 rows=339 loops=3)
+                          Sort Key: uuid_admision
+                          Sort Method: quicksort  Memory: 49kB
+                          Buffers: shared hit=10163 read=1306
+                          Worker 0:  Sort Method: quicksort  Memory: 36kB
+                          Worker 1:  Sort Method: quicksort  Memory: 36kB
+                          ->  Partial HashAggregate  (cost=16338.55..16344.15 rows=560 width=24) (actual time=46.339..46.369 rows=339 loops=3)
+                                Group Key: uuid_admision
+                                Batches: 1  Memory Usage: 105kB
+                                Buffers: shared hit=10149 read=1306
+                                Worker 0:  Batches: 1  Memory Usage: 57kB
+                                Worker 1:  Batches: 1  Memory Usage: 73kB
+                                ->  Parallel Seq Scan on telemetria_signos  (cost=0.00..15655.00 rows=136710 width=16) (actual time=0.032..35.146 rows=110043 loops=3)
+                                      Filter: alarma
+                                      Rows Removed by Filter: 225957
+                                      Buffers: shared hit=10149 read=1306
+Planning Time: 0.103 ms
+Execution Time: 53.044 ms
+
+==============================================================================
+OP-5 MongoDB — explain (línea base)
+==============================================================================
+{
+  "explainVersion": "2",
+  "stages": [
+    {
+      "$cursor": {
+        "queryPlanner": {
+          "namespace": "hce_antioquia.telemetria",
+          "parsedQuery": {
+            "alarma": {
+              "$eq": true
+            }
+          },
+          "indexFilterSet": false,
+          "queryHash": "F65A6D6D",
+          "planCacheShapeHash": "F65A6D6D",
+          "planCacheKey": "F894C326",
+          "optimizationTimeMillis": 0,
+          "maxIndexedOrSolutionsReached": false,
+          "maxIndexedAndSolutionsReached": false,
+          "maxScansToExplodeReached": false,
+          "prunedSimilarIndexes": false,
+          "winningPlan": {
+            "isCached": false,
+            "queryPlan": {
+              "stage": "GROUP",
+              "planNodeId": 3,
+              "inputStage": {
+                "stage": "COLLSCAN",
+                "planNodeId": 1,
+                "filter": {
+                  "alarma": {
+                    "$eq": true
+                  }
+                },
+                "direction": "forward"
+              }
+            },
+            "slotBasedPlan": {
+              "slots": "$$RESULT=s9 env: {  }",
+              "stages": "[3] project [s9 = newObj(\"_id\", s6, \"alarmas\", s8)] \n[3] project [s8 = (convert ( s7, int32) ?: s7)] \n[3] group [s6] [s7 = count()] spillSlots[s5] mergingExprs[sum(s5)] \n[3] project [s6 = (s1 ?: null)] \n[1] filter {traverseF(s2, lambda(l2.0) { ((move(l2.0) == true) ?: false) }, false)} \n[1] scan s3 s4 none none none none none none lowPriority [s1 = uuid_admision, s2 = alarma] @\"d24e2514-9e75-4869-b9e6-5aa5aeb3e386\" true false "
+            }
+          },
+          "rejectedPlans": []
+        },
+        "executionStats": {
+          "executionSuccess": true,
+          "nReturned": 538,
+          "executionTimeMillis": 813,
+          "totalKeysExamined": 0,
+          "totalDocsExamined": 1008000,
+          "executionStages": {
+            "stage": "project",
+            "planNodeId": 3,
+            "nReturned": 538,
+            "executionTimeMillisEstimate": 797,
+            "opens": 1,
+            "closes": 1,
+            "saveState": 46,
+            "restoreState": 46,
+            "isEOF": 1,
+            "projections": {
+              "9": "newObj(\"_id\", s6, \"alarmas\", s8) "
+            },
+            "inputStage": {
+              "stage": "project",
+              "planNodeId": 3,
+              "nReturned": 538,
+              "executionTimeMillisEstimate": 797,
+              "opens": 1,
+
+==============================================================================
+OP-7 MongoDB — coexistencia de esquemas
+==============================================================================
+Documentos con el campo nuevo signos.glucosa_mgdl: 100
+Documentos totales en la colección: 1,008,100
+La colección contiene dos formas de documento simultáneas sin migración.
+
+==============================================================================
+OP-8 MongoDB — intento de transacción multi-documento
+==============================================================================
+RECHAZADA por el motor: OperationFailure: Transaction numbers are only allowed on a replica set member or mongos, full error: {'ok': 0.0, 'errmsg': 'Transaction numbers are only allowed on a replica set member or mongos', 'code': 20, 'codeNam — las tres escrituras del egreso no pueden agruparse atómicamente en un despliegue de nodo único.
+
+==============================================================================
+OP-9 MongoDB — plan con índice de cobertura
+==============================================================================
+{
+  "explainVersion": "2",
+  "stages": [
+    {
+      "$cursor": {
+        "queryPlanner": {
+          "namespace": "hce_antioquia.telemetria",
+          "parsedQuery": {
+            "alarma": {
+              "$eq": true
+            }
+          },
+          "indexFilterSet": false,
+          "queryHash": "F65A6D6D",
+          "planCacheShapeHash": "F65A6D6D",
+          "planCacheKey": "38AC563E",
+          "optimizationTimeMillis": 0,
+          "maxIndexedOrSolutionsReached": false,
+          "maxIndexedAndSolutionsReached": false,
+          "maxScansToExplodeReached": false,
+          "prunedSimilarIndexes": false,
+          "winningPlan": {
+            "isCached": false,
+            "queryPlan": {
+              "stage": "GROUP",
+              "planNodeId": 3,
+              "inputStage": {
+                "stage": "PROJECTION_COVERED",
+                "planNodeId": 2,
+                "transformBy": {
+                  "uuid_admision": true,
+                  "_id": false
+                },
+                "inputStage": {
+                  "stage": "IXSCAN",
+                  "planNodeId": 1,
+                  "keyPattern": {
+                    "alarma": 1,
+                    "uuid_admision": 1
+                  },
+                  "indexName": "ix_alarma_adm",
+                  "isMultiKey": false,
+                  "multiKeyPaths": {
+                    "alarma": [],
+                    "uuid_admision": []
+                  },
+                  "isUnique": false,
+                  "isSparse": false,
+                  "isPartial": false,
+                  "indexVersion": 2,
+                  "direction": "forward",
+                  "indexBounds": {
+                    "alarma": [
+                      "[true, true]"
+                    ],
+                    "uuid_admision": [
+                      "[MinKey, MaxKey]"
+                    ]
+                  }
+                }
+              }
+            },
+            "slotBasedPlan": {
+              "slots": "$$RESULT=s7 env: {  }",
+              "stages": "[3] project [s7 = newObj(\"_id\", s4, \"alarmas\", s6)] \n[3] project [s6 = (convert ( s5, int32) ?: s5)] \n[3] group [s4] [s5 = count()] spillSlots[s3] mergingExprs[sum(s3)] \n[3] project [s4 = (s1 ?: null)] \n[1] ixseek KS(6F0A0104) KS(6FF0FE04) none s2 none none [s1 = 1] @\"d24e2514-9e75-4869-b9e6-5aa5aeb3e386\" @\"ix_alarma_adm\" true "
+            }
+          },
+          "rejectedPlans": []
+        },
+        "executionStats": {
+          "executionSuccess": true,
+          "nReturned": 538,
+          "executionTimeMillis": 568,
+          "totalKeysExamined": 330128,
+          "totalDocsExamined": 0,
+          "executionStages": {
+            "stage": "project",
+            "planNodeId": 3,
+            "nReturned": 538,
+            "executionTimeMillisEstimate": 543,
+            "opens": 1,
+            "closes": 1,
+            "saveState": 34,
+            "restoreState": 34,
+            "isEOF": 1,
+            "projections": {
+              "7": "newObj(\"_id\", s4, \"alarmas\", s6) "
+            },
+            "inputStage": {
+              "stage": "project",
+              "planNodeId": 3,
+              "nReturned": 538,
+              "executionTimeMillisEstimate": 543,
+              "opens": 1,
+              "closes": 1,
+              "saveState": 34,
+              "restoreState": 34,
+              "isEOF": 1,
+              "projections": {
+                "6": "(convert ( s5, int32) ?: s5) "
+              },
+              "inputStage": {
+                "stage": "group",
+                "planNodeId": 3,
+                "nReturned": 538,
+                "executionTimeMillisEstimate": 543,
+                "opens": 1,
+                "closes": 1,
+                "saveState": 34,
+                "restoreState": 34,
+                "isEOF": 1,
+                "groupBySlots": [
+                  4
+                ],
+                "expressions": {
+                  "5": "count() ",
+                  "initExprs": {
+
+==============================================================================
+OP-9 PostgreSQL — plan con índice de cobertura
+==============================================================================
+Limit  (cost=11524.70..11524.72 rows=10 width=24) (actual time=32.642..34.238 rows=10 loops=1)
+  Buffers: shared hit=19 read=1629 written=336
+  ->  Sort  (cost=11524.70..11526.10 rows=560 width=24) (actual time=32.640..34.235 rows=10 loops=1)
+        Sort Key: (count(*)) DESC
+        Sort Method: top-N heapsort  Memory: 26kB
+        Buffers: shared hit=19 read=1629 written=336
+        ->  Finalize GroupAggregate  (cost=11370.72..11512.60 rows=560 width=24) (actual time=32.310..34.190 rows=538 loops=1)
+              Group Key: uuid_admision
+              Buffers: shared hit=19 read=1629 written=336
+              ->  Gather Merge  (cost=11370.72..11501.40 rows=1120 width=24) (actual time=32.303..34.062 rows=1511 loops=1)
+                    Workers Planned: 2
+                    Workers Launched: 2
+                    Buffers: shared hit=19 read=1629 written=336
+                    ->  Sort  (cost=10370.70..10372.10 rows=560 width=24) (actual time=28.081..28.100 rows=504 loops=3)
+                          Sort Key: uuid_admision
+                          Sort Method: quicksort  Memory: 49kB
+                          Buffers: shared hit=19 read=1629 written=336
+                          Worker 0:  Sort Method: quicksort  Memory: 48kB
+                          Worker 1:  Sort Method: quicksort  Memory: 48kB
+                          ->  Partial HashAggregate  (cost=10339.53..10345.13 rows=560 width=24) (actual time=27.940..27.977 rows=504 loops=3)
+                                Group Key: uuid_admision
+                                Batches: 1  Memory Usage: 105kB
+                                Buffers: shared hit=5 read=1629 written=336
+                                Worker 0:  Batches: 1  Memory Usage: 73kB
+                                Worker 1:  Batches: 1  Memory Usage: 73kB
+                                ->  Parallel Index Only Scan using ix_tel_cobertura_alarmas on telemetria_signos  (cost=0.42..9654.51 rows=137004 width=16) (actual time=0.053..17.269 rows=110043 loops=3)
+                                      Heap Fetches: 38
+                                      Buffers: shared hit=5 read=1629 written=336
+Planning:
+  Buffers: shared hit=4
+Planning Time: 0.138 ms
+Execution Time: 34.283 ms

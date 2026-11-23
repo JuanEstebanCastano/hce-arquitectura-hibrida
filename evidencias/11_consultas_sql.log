@@ -1,0 +1,234 @@
+SET
+Timing is on.
+       medido_en        | fc | spo2 | pas | pad 
+------------------------+----+------+-----+-----
+ 2026-11-20 21:00:36-05 | 85 |   95 | 114 |  66
+ 2026-11-20 21:00:06-05 | 83 |   92 | 109 |  70
+ 2026-11-20 20:59:36-05 | 72 |   92 |  86 |  65
+ 2026-11-20 20:59:06-05 | 81 |   92 | 112 |  71
+ 2026-11-20 20:58:36-05 | 77 |   93 | 136 |  78
+ 2026-11-20 20:58:06-05 | 86 |   93 | 100 |  80
+ 2026-11-20 20:57:36-05 | 81 |   93 | 113 |  73
+ 2026-11-20 20:57:06-05 | 72 |   92 | 101 |  70
+ 2026-11-20 20:56:36-05 | 72 |   92 |  90 |  78
+ 2026-11-20 20:56:06-05 | 73 |   92 | 110 |  64
+ 2026-11-20 20:55:36-05 | 78 |   93 | 107 |  72
+ 2026-11-20 20:55:06-05 | 83 |   92 |  99 |  76
+ 2026-11-20 20:54:36-05 | 77 |   92 | 117 |  75
+ 2026-11-20 20:54:06-05 | 74 |   92 | 121 |  67
+ 2026-11-20 20:53:36-05 | 71 |   92 | 117 |  73
+ 2026-11-20 20:53:06-05 | 71 |   93 | 111 |  79
+ 2026-11-20 20:52:36-05 | 73 |   92 | 121 |  70
+ 2026-11-20 20:52:06-05 | 74 |   94 | 106 |  73
+ 2026-11-20 20:51:36-05 | 72 |   94 | 122 |  65
+ 2026-11-20 20:51:06-05 | 73 |   93 | 110 |  70
+ 2026-11-20 20:50:36-05 | 89 |   94 | 102 |  69
+ 2026-11-20 20:50:06-05 | 83 |   94 | 103 |  70
+ 2026-11-20 20:49:36-05 | 82 |   91 | 108 |  71
+ 2026-11-20 20:49:06-05 | 76 |   91 | 123 |  61
+ 2026-11-20 20:48:36-05 | 80 |   93 | 108 |  65
+ 2026-11-20 20:48:06-05 | 72 |   93 | 109 |  80
+ 2026-11-20 20:47:36-05 | 71 |   93 | 114 |  71
+ 2026-11-20 20:47:06-05 | 86 |   91 |  97 |  69
+ 2026-11-20 20:46:36-05 | 75 |   92 | 111 |  76
+ 2026-11-20 20:46:06-05 | 72 |   92 | 103 |  62
+ 2026-11-20 20:45:36-05 | 81 |   91 | 125 |  70
+ 2026-11-20 20:45:06-05 | 67 |   96 | 107 |  64
+ 2026-11-20 20:44:36-05 | 77 |   93 | 111 |  78
+ 2026-11-20 20:44:06-05 | 72 |   94 | 107 |  69
+ 2026-11-20 20:43:36-05 | 72 |   93 | 111 |  69
+ 2026-11-20 20:43:06-05 | 89 |   92 | 104 |  67
+ 2026-11-20 20:42:36-05 | 83 |   92 | 111 |  64
+ 2026-11-20 20:42:06-05 | 69 |   96 |  98 |  78
+ 2026-11-20 20:41:36-05 | 69 |   91 | 101 |  79
+ 2026-11-20 20:41:06-05 | 66 |   94 | 120 |  71
+ 2026-11-20 20:40:36-05 | 76 |   93 | 108 |  65
+ 2026-11-20 20:40:06-05 | 78 |   94 | 109 |  74
+ 2026-11-20 20:39:36-05 | 77 |   92 | 100 |  71
+ 2026-11-20 20:39:06-05 | 73 |   93 |  97 |  66
+ 2026-11-20 20:38:36-05 | 78 |   94 | 113 |  65
+ 2026-11-20 20:38:06-05 | 88 |   93 | 111 |  75
+ 2026-11-20 20:37:36-05 | 89 |   94 | 114 |  71
+ 2026-11-20 20:37:06-05 | 77 |   93 |  88 |  72
+ 2026-11-20 20:36:36-05 | 76 |   97 |  99 |  75
+ 2026-11-20 20:36:06-05 | 72 |   94 |  99 |  61
+(50 rows)
+
+Time: 1.743 ms
+ lecturas_en_alarma | pacientes_afectados 
+--------------------+---------------------
+             133216 |                 513
+(1 row)
+
+Time: 57.854 ms
+          hora          | fc_promedio | fc_maxima | spo2_minima | spo2_promedio | alarmas 
+------------------------+-------------+-----------+-------------+---------------+---------
+ 2026-11-20 06:00:00-05 |        68.6 |        85 |          94 |          96.8 |       0
+ 2026-11-20 07:00:00-05 |        69.7 |        86 |          94 |          96.6 |       0
+ 2026-11-20 08:00:00-05 |        69.8 |        86 |          94 |          96.3 |       0
+ 2026-11-20 09:00:00-05 |        70.0 |        84 |          94 |          96.0 |       0
+ 2026-11-20 10:00:00-05 |        71.2 |        86 |          93 |          95.9 |       0
+ 2026-11-20 11:00:00-05 |        71.7 |        85 |          93 |          95.4 |       0
+ 2026-11-20 12:00:00-05 |        72.0 |        83 |          93 |          95.3 |       0
+ 2026-11-20 13:00:00-05 |        73.4 |        89 |          91 |          95.0 |       0
+ 2026-11-20 14:00:00-05 |        73.4 |        87 |          92 |          94.8 |       0
+ 2026-11-20 15:00:00-05 |        75.0 |        89 |          91 |          94.6 |       0
+ 2026-11-20 16:00:00-05 |        74.9 |        91 |          91 |          94.3 |       1
+ 2026-11-20 17:00:00-05 |        76.0 |        87 |          92 |          94.1 |       0
+ 2026-11-20 18:00:00-05 |        77.8 |        93 |          92 |          93.7 |       0
+ 2026-11-20 19:00:00-05 |        77.1 |        92 |          90 |          93.4 |       0
+ 2026-11-20 20:00:00-05 |        77.0 |        90 |          91 |          93.1 |       2
+ 2026-11-20 21:00:00-05 |        84.0 |        85 |          92 |          93.5 |       0
+(16 rows)
+
+Time: 1.090 ms
+            uuid_admision             | alarmas 
+--------------------------------------+---------
+ e7d74339-17ae-44ae-ab9a-a602b9bbc2cd |    1671
+ 69ddc012-951e-4c0a-852c-59e285c76113 |    1663
+ aa2467fe-04ec-43eb-b5dd-3d0340ce9a88 |    1659
+ 8b860404-6709-47df-8bed-158a605bde5b |    1658
+ fc2fe5ab-4fb7-42bf-be41-4e68df05e9d8 |    1655
+ 94f959a3-ef3b-492f-bcbf-f7cc902b3a83 |    1655
+ c216585f-aaec-425b-a09a-9985d99be282 |    1651
+ ab467cb6-aebc-44cc-8940-827179319ad7 |    1650
+ 03ff6b3e-ca38-4d85-aafe-193e7eae4d6b |    1650
+ c033b1c2-6576-443d-a2b4-a29e72db47ae |    1649
+(10 rows)
+
+Time: 22.470 ms
+            uuid_admision             |     paciente     |   documento   |                sede                 |  cama   |  medico_tratante   
+--------------------------------------+------------------+---------------+-------------------------------------+---------+--------------------
+ 42150ac4-499b-47e3-b340-53daa0a71ce0 | Natalia Restrepo | CC-1000037721 | E.S.E. Hospital General de Medellín | C003-01 | Isabel Zapata
+ c150ba63-5992-46d7-ace0-7ed6689d7f8d | María Jaramillo  | CC-1000093489 | E.S.E. Hospital General de Medellín | C003-02 | Daniela Castaño
+ 61bc709c-16bf-47fa-9847-3f2aed161ee4 | Andrés Arango    | CC-1000096580 | E.S.E. Hospital General de Medellín | C003-03 | Marcela Arango
+ b5f0a7a5-a9fc-48a8-b236-a29c3ad9c0cc | Sandra Correa    | TI-1000136066 | E.S.E. Hospital General de Medellín | C003-04 | Camilo Correa
+ 1e5df286-1e49-43b6-941c-fdf9b2f7dca0 | Jhon Zapata      | TI-1000133281 | E.S.E. Hospital General de Medellín | C003-05 | Santiago Quintero
+ 334f3969-b428-4c28-82d6-9835a201b71f | Luis Restrepo    | CC-1000007770 | E.S.E. Hospital General de Medellín | C003-06 | Felipe Restrepo
+ e8a3c6b9-6dfb-4753-8317-71a79d31bde6 | Jorge Arango     | CC-1000036682 | E.S.E. Hospital General de Medellín | C003-07 | Daniela Castaño
+ 16858efc-81e5-4bfb-b9d2-153217706580 | Laura Castaño    | CC-1000039065 | E.S.E. Hospital General de Medellín | C003-08 | Catalina Mesa
+ fabde07b-9c4b-4236-8b30-b3b296438613 | Felipe Castaño   | TI-1000003794 | E.S.E. Hospital La María            | C009-01 | Santiago Mesa
+ 9f917290-d9f2-4f75-8cec-f58c31f2f985 | Sandra Gallego   | CC-1000041801 | E.S.E. Hospital La María            | C009-02 | Luisa Monsalve
+ 74e08200-f4ce-4b37-8df6-b843e42b430d | Juan Correa      | CC-1000136968 | E.S.E. Hospital La María            | C009-03 | Camilo Castaño
+ 9fa63072-d139-4e58-ac82-17413e8a3e82 | Carlos Cardona   | CC-1000062641 | E.S.E. Hospital La María            | C009-04 | Paula Jaramillo
+ e7d74339-17ae-44ae-ab9a-a602b9bbc2cd | María Mesa       | CC-1000087361 | E.S.E. Hospital La María            | C009-05 | Isabel Correa
+ 8ee79b56-b43f-4229-8727-03de64668770 | Daniela Castaño  | CC-1000115017 | E.S.E. Hospital La María            | C009-06 | Isabel Correa
+ 6cee0f2b-c8c6-402b-ae20-719fdc561c54 | Natalia Castaño  | CC-1000052198 | E.S.E. Hospital La María            | C009-07 | Mauricio Echeverri
+ de73769a-21f2-4034-b498-ce6417ebab25 | Juan Mesa        | CC-1000123181 | E.S.E. Hospital La María            | C009-08 | Felipe Zapata
+ a420baf8-5fdc-4d5f-9247-7f7b5f72abc8 | Jhon Gallego     | CC-1000021337 | E.S.E. Hospital Marco Fidel Suárez  | C015-01 | Paula Echeverri
+ 079a618a-f6df-44dd-b866-02cabe800325 | Natalia Gómez    | CC-1000044988 | E.S.E. Hospital Marco Fidel Suárez  | C015-02 | Felipe Correa
+ 756312b4-1cc8-43df-bdb0-c950dd34c1d0 | Ángela Gallego   | CC-1000105669 | E.S.E. Hospital Marco Fidel Suárez  | C015-03 | Catalina Zapata
+ 9feb7fbe-ffbd-4280-9d3b-96f44fba0356 | Carlos Zapata    | CC-1000126380 | E.S.E. Hospital Marco Fidel Suárez  | C015-04 | Andrés Monsalve
+(20 rows)
+
+Time: 4.372 ms
+Time: 0.241 ms
+BEGIN
+Time: 0.046 ms
+CALL
+Time: 1.826 ms
+ id_admision | estado  | tipo_egreso | estado_cama 
+-------------+---------+-------------+-------------
+           1 | CERRADA | MEJORIA     | LIMPIEZA
+(1 row)
+
+Time: 0.210 ms
+ id_admision | id_cama_liberada |                     detalle                     
+-------------+------------------+-------------------------------------------------
+           1 |              171 | {"dx_egreso": "I10X", "tipo_egreso": "MEJORIA"}
+(1 row)
+
+Time: 0.097 ms
+COMMIT
+Time: 0.211 ms
+BEGIN
+Time: 0.033 ms
+psql:sql/04_consultas.sql:100: NOTICE:  Rechazado como se esperaba: La admisión 1 ya fue egresada
+DO
+Time: 0.277 ms
+ROLLBACK
+Time: 0.051 ms
+                sede                 |     servicio     | ocupadas | camas | pct_ocupacion 
+-------------------------------------+------------------+----------+-------+---------------
+ E.S.E. Hospital General de Medellín | PEDIATRIA        |       12 |    12 |         100.0
+ E.S.E. Hospital General de Medellín | UCI              |        8 |     8 |         100.0
+ E.S.E. Hospital La Anunciación      | GINECOBSTETRICIA |       12 |    12 |         100.0
+ E.S.E. Hospital La María            | UCI              |        8 |     8 |         100.0
+ E.S.E. Hospital La María            | URGENCIAS_OBS    |       12 |    12 |         100.0
+ E.S.E. Hospital Marco Fidel Suárez  | GINECOBSTETRICIA |       12 |    12 |         100.0
+ E.S.E. Hospital Marco Fidel Suárez  | UCI              |        8 |     8 |         100.0
+ E.S.E. Hospital San Antonio         | MEDICINA_INTERNA |       12 |    12 |         100.0
+ E.S.E. Hospital San Juan de Dios    | CIRUGIA          |       12 |    12 |         100.0
+ E.S.E. Hospital San Rafael          | GINECOBSTETRICIA |       12 |    12 |         100.0
+ E.S.E. Hospital San Vicente de Paúl | PEDIATRIA        |       12 |    12 |         100.0
+ E.S.E. Hospital San Vicente de Paúl | UCI              |        8 |     8 |         100.0
+ E.S.E. Hospital San Vicente de Paúl | URGENCIAS_OBS    |       12 |    12 |         100.0
+ E.S.E. Hospital del Sur             | GINECOBSTETRICIA |       12 |    12 |         100.0
+ E.S.E. Hospital del Sur             | URGENCIAS_OBS    |       12 |    12 |         100.0
+ E.S.E. Hospital General de Medellín | CIRUGIA          |       11 |    12 |          91.7
+ E.S.E. Hospital General de Medellín | MEDICINA_INTERNA |       11 |    12 |          91.7
+ E.S.E. Hospital General de Medellín | URGENCIAS_OBS    |       11 |    12 |          91.7
+ E.S.E. Hospital La Anunciación      | CIRUGIA          |       11 |    12 |          91.7
+ E.S.E. Hospital La Anunciación      | URGENCIAS_OBS    |       11 |    12 |          91.7
+ E.S.E. Hospital La María            | CIRUGIA          |       11 |    12 |          91.7
+ E.S.E. Hospital La María            | PEDIATRIA        |       11 |    12 |          91.7
+ E.S.E. Hospital Marco Fidel Suárez  | MEDICINA_INTERNA |       11 |    12 |          91.7
+ E.S.E. Hospital Marco Fidel Suárez  | URGENCIAS_OBS    |       11 |    12 |          91.7
+ E.S.E. Hospital San Juan de Dios    | URGENCIAS_OBS    |       11 |    12 |          91.7
+ E.S.E. Hospital San Vicente de Paúl | CIRUGIA          |       11 |    12 |          91.7
+ E.S.E. Hospital San Vicente de Paúl | GINECOBSTETRICIA |       11 |    12 |          91.7
+ E.S.E. Hospital San Vicente de Paúl | MEDICINA_INTERNA |       11 |    12 |          91.7
+ E.S.E. Hospital del Sur             | CIRUGIA          |       11 |    12 |          91.7
+ E.S.E. Hospital del Sur             | MEDICINA_INTERNA |       11 |    12 |          91.7
+ E.S.E. Hospital del Sur             | PEDIATRIA        |       11 |    12 |          91.7
+ E.S.E. Hospital General de Medellín | UCI_NEONATAL     |        7 |     8 |          87.5
+ E.S.E. Hospital La Anunciación      | UCI              |        7 |     8 |          87.5
+ E.S.E. Hospital La María            | UCI_NEONATAL     |        7 |     8 |          87.5
+ E.S.E. Hospital San Juan de Dios    | UCI              |        7 |     8 |          87.5
+ E.S.E. Hospital San Rafael          | UCI              |        7 |     8 |          87.5
+ E.S.E. Hospital del Sur             | UCI              |        7 |     8 |          87.5
+ E.S.E. Hospital General de Medellín | GINECOBSTETRICIA |       10 |    12 |          83.3
+ E.S.E. Hospital La Anunciación      | MEDICINA_INTERNA |       10 |    12 |          83.3
+ E.S.E. Hospital La Anunciación      | PEDIATRIA        |       10 |    12 |          83.3
+ E.S.E. Hospital La María            | GINECOBSTETRICIA |       10 |    12 |          83.3
+ E.S.E. Hospital La María            | MEDICINA_INTERNA |       10 |    12 |          83.3
+ E.S.E. Hospital Marco Fidel Suárez  | CIRUGIA          |       10 |    12 |          83.3
+ E.S.E. Hospital San Juan de Dios    | GINECOBSTETRICIA |       10 |    12 |          83.3
+ E.S.E. Hospital San Juan de Dios    | MEDICINA_INTERNA |       10 |    12 |          83.3
+ E.S.E. Hospital San Juan de Dios    | PEDIATRIA        |       10 |    12 |          83.3
+ E.S.E. Hospital San Rafael          | CIRUGIA          |       10 |    12 |          83.3
+ E.S.E. Hospital San Rafael          | PEDIATRIA        |       10 |    12 |          83.3
+ E.S.E. Hospital San Rafael          | URGENCIAS_OBS    |       10 |    12 |          83.3
+ E.S.E. Hospital San Antonio         | URGENCIAS_OBS    |        9 |    12 |          75.0
+ E.S.E. Hospital San Rafael          | MEDICINA_INTERNA |        9 |    12 |          75.0
+ E.S.E. Hospital Marco Fidel Suárez  | PEDIATRIA        |        8 |    12 |          66.7
+(52 rows)
+
+Time: 0.800 ms
+ codigo |                      descripcion                      | egresos | dias_estancia_prom 
+--------+-------------------------------------------------------+---------+--------------------
+ E141   | Diabetes mellitus no especificada con cetoacidosis    |     397 |              10.89
+ E119   | Diabetes mellitus tipo 2 sin complicaciones           |     378 |              10.57
+ P073   | Otros recién nacidos pretérmino                       |     366 |              10.48
+ I219   | Infarto agudo del miocardio, sin otra especificación  |     355 |              10.44
+ K219   | Enfermedad del reflujo gastroesofágico sin esofagitis |     376 |              10.39
+ S720   | Fractura del cuello de fémur                          |     412 |              10.39
+ N390   | Infección de vías urinarias, sitio no especificado    |     355 |              10.39
+ A090   | Gastroenteritis y colitis de origen infeccioso        |     371 |              10.30
+ A419   | Sepsis, no especificada                               |     369 |              10.28
+ S069   | Traumatismo intracraneal, no especificado             |     362 |              10.24
+(10 rows)
+
+Time: 3.308 ms
+    subregion    | egresos | fallecimientos | tasa_pct 
+-----------------+---------+----------------+----------
+ Suroeste        |     288 |             13 |     4.51
+ Bajo Cauca      |     851 |             38 |     4.47
+ Valle de Aburrá |    3596 |            154 |     4.28
+ Urabá           |     930 |             36 |     3.87
+ Norte           |     938 |             32 |     3.41
+ Oriente         |     869 |             24 |     2.76
+(6 rows)
+
+Time: 1.589 ms
+Timing is off.

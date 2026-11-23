@@ -1,0 +1,49 @@
+SET
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+         tabla          |              indice              |   tamano   
+------------------------+----------------------------------+------------
+ cama                   | uq_cama                          | 40 kB
+ dispositivo            | dispositivo_serial_fabrica_key   | 40 kB
+ cama                   | cama_pkey                        | 32 kB
+ dispositivo            | dispositivo_pkey                 | 32 kB
+ pabellon               | uq_pabellon                      | 16 kB
+ diagnostico_cie10      | diagnostico_cie10_pkey           | 16 kB
+ sede                   | sede_codigo_habilita_key         | 16 kB
+ eps                    | eps_pkey                         | 16 kB
+ eps                    | eps_nit_key                      | 16 kB
+ profesional            | profesional_pkey                 | 16 kB
+ sede                   | sede_pkey                        | 16 kB
+ profesional            | profesional_registro_rethus_key  | 16 kB
+ profesional            | uq_profesional_doc               | 16 kB
+ pabellon               | pabellon_pkey                    | 16 kB
+ admision               | ix_admision_sede_estado          | 8192 bytes
+ admision               | ix_admision_paciente             | 8192 bytes
+ admision               | ix_admision_abiertas             | 8192 bytes
+ admision               | ix_admision_dx                   | 8192 bytes
+ admision_diagnostico   | ix_admdx_codigo                  | 8192 bytes
+ asignacion_dispositivo | ix_asignacion_admision           | 8192 bytes
+ telemetria_signos      | ix_tel_adm_tiempo                | 8192 bytes
+ telemetria_signos      | ix_tel_alarmas                   | 8192 bytes
+ paciente               | paciente_pkey                    | 8192 bytes
+ paciente               | paciente_uuid_paciente_key       | 8192 bytes
+ paciente               | uq_paciente_documento            | 8192 bytes
+ admision               | admision_pkey                    | 8192 bytes
+ admision               | admision_uuid_admision_key       | 8192 bytes
+ admision               | uq_cama_ocupada_una_vez          | 8192 bytes
+ admision               | uq_paciente_una_admision_abierta | 8192 bytes
+ admision_diagnostico   | admision_diagnostico_pkey        | 8192 bytes
+ asignacion_dispositivo | asignacion_dispositivo_pkey      | 8192 bytes
+ asignacion_dispositivo | uq_dispositivo_asignado          | 8192 bytes
+ telemetria_signos      | telemetria_signos_pkey           | 8192 bytes
+ auditoria_egreso       | auditoria_egreso_pkey            | 8192 bytes
+ paciente               | ix_paciente_apellidos            | 8192 bytes
+(35 rows)
+

@@ -1,0 +1,23 @@
+operacion,motor,p50_ms,p95_ms,p99_ms,media_ms,repeticiones,unidad,nota
+Ingesta lote 5.000 lecturas,PostgreSQL,75.463,90.635,92.73,77.518,30,ms,"INSERT multi-fila (execute_values) en tabla permanente: WAL + MVCC, commit por lote"
+Ingesta lote 5.000 lecturas,MongoDB,37.595,52.573,58.196,40.462,30,ms,"insert_many ordered=False en colección normal, writeConcern w:1 j:false"
+Ingesta lote 5.000 (COPY nativo),PostgreSQL,13.809,15.384,15.968,14.01,30,ms,Vía optimizada: sin parseo de INSERT fila a fila
+Últimas 50 lecturas de una admisión,PostgreSQL,0.116,0.162,0.183,0.126,30,ms,
+Últimas 50 lecturas de una admisión,MongoDB,0.355,0.421,0.422,0.361,30,ms,
+Alarmas últimas 6 h (índice parcial),PostgreSQL,27.079,28.09,28.094,26.981,30,ms,
+Alarmas últimas 6 h (índice parcial),MongoDB,185.716,189.598,190.419,186.379,30,ms,
+Tendencia horaria de una admisión,PostgreSQL,0.546,0.583,0.595,0.551,30,ms,
+Tendencia horaria de una admisión,MongoDB,7.987,9.137,9.221,8.119,30,ms,
+Top-10 admisiones por alarmas (dataset completo),PostgreSQL,42.64,43.344,43.344,43.595,10,ms,
+Top-10 admisiones por alarmas (dataset completo),MongoDB,789.174,798.455,798.455,789.768,10,ms,
+Tablero UCI: 20 camas con último signo vital,Híbrido PG+Mongo,170.924,182.711,184.78,175.762,30,ms,2 round-trips: 1 a PG + 1 pipeline $group sobre $in
+Tablero UCI — orquestación optimizada,Híbrido PG+Mongo,7.12,7.846,8.028,7.22,30,ms,"21 round-trips cortos resueltos por ix_adm_tiempo, sin agregación"
+Añadir 2 campos nuevos (DDL),PostgreSQL,0.845,0.845,0.845,0.845,1,ms,"ALTER TABLE ADD COLUMN NULL: solo catálogo, sin reescritura"
+Backfill del campo nuevo (1 admisión),PostgreSQL,6.984,6.984,6.984,6.984,1,ms,"UPDATE de 1,800 filas: reescritura de tuplas (MVCC)"
+Aceptar 2 campos nuevos (sin DDL),MongoDB,1.44,1.44,1.44,1.44,1,ms,Sin DDL: 100 documentos con forma nueva conviven con los anteriores
+Egreso (4 tablas en 1 transacción),PostgreSQL,0.3,0.485,0.538,0.333,30,ms,"ACID: UPDATE admision + cama + dispositivo + INSERT auditoría, todo o nada"
+Alarmas últimas 6 h — índice cobertura v1,PostgreSQL,24.586,25.341,25.53,24.738,30,ms,"Índice parcial (medido_en, uuid_admision) WHERE alarma"
+Alarmas últimas 6 h — índice cobertura v1,MongoDB,41.254,42.09,42.198,41.25,30,ms,"ix_cobertura_alarmas {alarma, medido_en, uuid_admision}: consulta cubierta"
+Top-10 por alarmas — índice cobertura v1,PostgreSQL,44.749,45.94,45.94,45.029,10,ms,El planeador SÍ usa el índice (Parallel Index Only Scan) y aun así no gana: 33 % de selectividad
+Top-10 por alarmas — índice cobertura v1,MongoDB,1136.669,1164.673,1164.673,1131.119,10,ms,Índice mal ordenado para el $group: EMPEORA respecto al COLLSCAN
+Top-10 por alarmas — índice cobertura v2,MongoDB,563.602,596.663,596.663,569.617,10,ms,"ix_alarma_adm {alarma, uuid_admision}: PROJECTION_COVERED, sin FETCH"

@@ -1,0 +1,14 @@
+→ Preparando tabla espejo e índices equivalentes a los de MongoDB…
+→ 560 admisiones monitorizadas | 1,008,000 lecturas a insertar (modo=lotes)
+   100,000 (57,702 filas/s)
+   200,000 (57,051 filas/s)
+   300,000 (57,057 filas/s)
+   400,000 (57,003 filas/s)
+   500,000 (56,662 filas/s)
+   600,000 (56,439 filas/s)
+   700,000 (56,293 filas/s)
+   800,000 (55,998 filas/s)
+   900,000 (55,770 filas/s)
+   1,000,000 (55,610 filas/s)
+✓ telemetria_signos: 1,008,000 filas en 18.13 s → 55,604 filas/s
+Resumen telemetria_signos: datos 89 MB | índices 94 MB | total 184 MB

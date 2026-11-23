@@ -1,0 +1,20 @@
+→ Creando colecciones, validadores e índices…
+→ 560 admisiones monitorizadas leídas desde PostgreSQL
+→ Ingesta de 1,008,000 lecturas de telemetría (lotes de 5,000)…
+   100,000/1,008,000 (80,534 docs/s)
+   200,000/1,008,000 (79,955 docs/s)
+   300,000/1,008,000 (79,421 docs/s)
+   400,000/1,008,000 (78,768 docs/s)
+   500,000/1,008,000 (78,810 docs/s)
+   600,000/1,008,000 (78,649 docs/s)
+   700,000/1,008,000 (77,802 docs/s)
+   800,000/1,008,000 (77,643 docs/s)
+   900,000/1,008,000 (77,778 docs/s)
+   1,000,000/1,008,000 (77,548 docs/s)
+✓ telemetria: 1,008,000 docs en 12.99 s → 77,577 docs/s
+→ Ingesta de 150,000 eventos clínicos (esquema variable)…
+✓ eventos_clinicos: 150,000 docs en 2.47 s
+→ Ingesta de 5,000 teleconsultas (documentos anidados)…
+✓ teleconsultas: 5,000 docs en 0.38 s
+
+Resumen telemetria: 1,008,000 docs | datos 255.7 MB | índices 26.5 MB

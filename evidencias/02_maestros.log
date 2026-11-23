@@ -1,0 +1,20 @@
+SET
+INSERT 0 9
+INSERT 0 6
+INSERT 0 20
+INSERT 0 50
+INSERT 0 2
+INSERT 0 584
+INSERT 0 126
+INSERT 0 584
+      t      | count 
+-------------+-------
+ sede        |     9
+ eps         |     6
+ cie10       |    20
+ pabellon    |    52
+ cama        |   584
+ profesional |   126
+ dispositivo |   584
+(7 rows)
+

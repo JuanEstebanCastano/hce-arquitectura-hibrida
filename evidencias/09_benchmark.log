@@ -1,0 +1,48 @@
+
+Volumen verificado → PostgreSQL: 1,008,000 filas | MongoDB: 1,008,000 documentos
+Admisiones monitorizadas: 560
+
+OP-1 · Ingesta por lotes de 5.000 lecturas
+  PostgreSQL Ingesta lote 5.000 lecturas                p50=    75.46 ms  p95=    90.64  media=    77.52
+  MongoDB    Ingesta lote 5.000 lecturas                p50=    37.59 ms  p95=    52.57  media=    40.46
+  PostgreSQL Ingesta lote 5.000 (COPY nativo)           p50=    13.81 ms  p95=    15.38  media=    14.01
+
+OP-2 · Lectura puntual: últimas 50 lecturas de una admisión
+  PostgreSQL Últimas 50 lecturas de una admisión        p50=     0.12 ms  p95=     0.16  media=     0.13
+  MongoDB    Últimas 50 lecturas de una admisión        p50=     0.35 ms  p95=     0.42  media=     0.36
+
+OP-3 · Ventana temporal con filtro: alarmas de las últimas 6 horas
+  PostgreSQL Alarmas últimas 6 h (índice parcial)       p50=    27.08 ms  p95=    28.09  media=    26.98
+  MongoDB    Alarmas últimas 6 h (índice parcial)       p50=   185.72 ms  p95=   189.60  media=   186.38
+
+OP-4 · Agregación por hora de una admisión (tendencia clínica)
+  PostgreSQL Tendencia horaria de una admisión          p50=     0.55 ms  p95=     0.58  media=     0.55
+  MongoDB    Tendencia horaria de una admisión          p50=     7.99 ms  p95=     9.14  media=     8.12
+
+OP-5 · Agregación global sobre 1.008.000 registros (ranking de alarmas)
+  PostgreSQL Top-10 admisiones por alarmas (dataset completo) p50=    42.64 ms  p95=    43.34  media=    43.59
+  MongoDB    Top-10 admisiones por alarmas (dataset completo) p50=   789.17 ms  p95=   798.46  media=   789.77
+
+OP-6 · Consulta HÍBRIDA: identidad (PG) + telemetría (Mongo)
+  Híbrido PG+Mongo Tablero UCI: 20 camas con último signo vital p50=   170.92 ms  p95=   182.71  media=   175.76
+  Híbrido PG+Mongo Tablero UCI — orquestación optimizada      p50=     7.12 ms  p95=     7.85  media=     7.22
+
+Almacenamiento: {"PostgreSQL": {"datos_MB": 93.8, "indices_MB": 98.6, "total_MB": 192.5, "registros": 1008000}, "MongoDB": {"datos_MB": 255.7, "datos_comprimidos_MB": 45.7, "indices_MB": 26.6, "total_MB": 72.3, "registros": 1008000}}
+
+OP-7 · Evolución del esquema: llega un sensor nuevo (glucometría + EtCO2)
+  PostgreSQL ALTER TABLE ADD COLUMN x2            → 0.84 ms
+  PostgreSQL backfill de 1,800 filas          → 6.98 ms
+  MongoDB inserta 100 docs con forma nueva        → 1.44 ms (0 migraciones)
+
+OP-8 · Transacción multi-entidad: egreso hospitalario
+  PostgreSQL Egreso (4 tablas en 1 transacción)         p50=     0.30 ms  p95=     0.48  media=     0.33
+  MongoDB transacción multi-documento → RECHAZADA por el motor: OperationFailure: Transaction numbers are only allowed on a replica set member or mong
+
+OP-9 · Optimización: índices de cobertura sugeridos por IA
+  PostgreSQL Alarmas últimas 6 h — índice cobertura v1  p50=    24.59 ms  p95=    25.34  media=    24.74
+  MongoDB    Alarmas últimas 6 h — índice cobertura v1  p50=    41.25 ms  p95=    42.09  media=    41.25
+  PostgreSQL Top-10 por alarmas — índice cobertura v1   p50=    44.75 ms  p95=    45.94  media=    45.03
+  MongoDB    Top-10 por alarmas — índice cobertura v1   p50=  1136.67 ms  p95=  1164.67  media=  1131.12
+  MongoDB    Top-10 por alarmas — índice cobertura v2   p50=   563.60 ms  p95=   596.66  media=   569.62
+
+✓ Resultados en /home/claude/hce-hibrido/bench/resultados/metricas.csv, metricas.json y planes.txt

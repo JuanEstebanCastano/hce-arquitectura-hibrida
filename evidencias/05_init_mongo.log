@@ -1,0 +1,3 @@
+telemetria → índices: _id_, ix_adm_tiempo, ix_alarmas
+eventos_clinicos → índices: _id_, ix_adm_evento, ix_tipo_evento, ix_criticos
+teleconsultas → índices: _id_, ix_pac_teleconsulta, ix_texto_transcripcion
