@@ -2,9 +2,8 @@
 title: "Arquitectura híbrida PostgreSQL + MongoDB para el subsistema de hospitalización de una Historia Clínica Electrónica"
 subtitle: "Unidad 3 — Bases de Datos II · Institución Universitaria Pascual Bravo"
 author:
-  - "Laura ⟨apellidos⟩"
-  - "Jhon Jader Correa"
   - "Juan Esteban Castaño Montoya"
+  - "Jhonjader Correa Ruiz"
 date: "22 de noviembre de 2026"
 lang: es
 papersize: a4

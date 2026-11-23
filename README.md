@@ -1,7 +1,7 @@
 # Arquitectura híbrida PostgreSQL + MongoDB — Subsistema de hospitalización (HCE)
 
 **Unidad 3 · Bases de Datos II · Institución Universitaria Pascual Bravo**
-Equipo: Laura ⟨apellidos⟩ · Jhon Jader Correa · Juan Esteban Castaño Montoya
+Equipo: Juan Esteban Castaño Montoya · Jhonjader Correa Ruiz
 
 Repositorio: https://github.com/JuanEstebanCastano/hce-arquitectura-hibrida
 

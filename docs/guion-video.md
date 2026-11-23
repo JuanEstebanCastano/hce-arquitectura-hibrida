@@ -1,18 +1,16 @@
 # Guion del video demostrativo (8–10 minutos)
 
 **Entrega:** Unidad 3 — Bases de Datos II
-**Integrantes y reparto:** Laura ⟨apellidos⟩ · Jhon Jader Correa · Juan Esteban
-Castaño Montoya
+**Integrantes y reparto:** Juan Esteban Castaño Montoya · Jhonjader Correa Ruiz
 
 La rúbrica exige **participación equilibrada**: cada integrante habla en pantalla
 y además *ejecuta* algo en vivo. Tiempo total objetivo: **9:00**, repartido en
-tres partes prácticamente iguales:
+dos mitades prácticamente iguales:
 
 | Integrante | Bloques | Tiempo |
 |---|---|---:|
-| Laura | 1 (arquitectura) + parte de 4 (optimizaciones) | ~2:50 |
-| Jhon Jader | 2 (PostgreSQL en vivo) + parte de 4 + mitad del cierre | ~3:10 |
-| Juan Esteban | 3 (MongoDB en vivo) + parte de 4 + mitad del cierre | ~3:00 |
+| Juan Esteban | 1 (arquitectura) + 3 (MongoDB en vivo) + parte de 4 | ~4:30 |
+| Jhonjader | 2 (PostgreSQL en vivo) + parte de 4 + cierre | ~4:30 |
 
 ---
 
@@ -28,7 +26,7 @@ tres partes prácticamente iguales:
 
 ---
 
-## Bloque 1 · Problema y arquitectura — **Laura** (0:00 – 2:15)
+## Bloque 1 · Problema y arquitectura — **Juan Esteban** (0:00 – 2:15)
 
 **En pantalla:** diagrama `fig0_arquitectura.png`.
 
@@ -54,7 +52,7 @@ Qué decir, en este orden:
 
 ---
 
-## Bloque 2 · Implementación relacional en vivo — **Jhon Jader** (2:15 – 4:30)
+## Bloque 2 · Implementación relacional en vivo — **Jhonjader** (2:15 – 4:30)
 
 **En pantalla:** terminal con `psql`.
 
@@ -153,7 +151,7 @@ promete menos* (`w:1`, sin WAL transaccional). Mostrar también la tercera barra
 con `COPY`, PostgreSQL es 2,7× más rápido que MongoDB — el motor relacional no es
 lento en ingesta, lo es por el camino transaccional.
 
-**Jhon Jader — dónde gana PostgreSQL** (7:15–7:55)
+**Juan Esteban — dónde gana PostgreSQL** (7:15–7:55)
 Figura 2 del informe, escala logarítmica. Agregación global: 43 ms contra 789 ms, **18,5×**.
 Explicar el porqué: ejecución paralela sobre tuplas de ancho fijo frente a
 *pipeline* de documentos BSON en un hilo. Y mostrar el resultado de la
@@ -166,7 +164,7 @@ RECHAZADA: Transaction numbers are only allowed on a replica set member or mongo
 > «MongoDB sí soporta transacciones desde la 4.0, pero exige *replica set*. La
 > atomicidad no es gratis: se paga con topología.»
 
-**Laura — las optimizaciones y lo que enseñaron** (7:55–8:30)
+**Jhonjader — las optimizaciones y lo que enseñaron** (7:55–8:30)
 Figura 5 del informe. Tres hallazgos, en este orden:
 
 1. El índice que la IA propuso mejoró una consulta 4,5× y **empeoró otra 1,44×**.
@@ -181,9 +179,9 @@ Figura 5 del informe. Tres hallazgos, en este orden:
 
 ---
 
-## Bloque 5 · Cierre — **Jhon Jader y Juan Esteban** (8:30 – 9:00)
+## Bloque 5 · Cierre — **Juan Esteban y Jhonjader** (8:30 – 9:00)
 
-Jhon Jader enuncia los puntos 1 y 2; Juan Esteban, el 3 y el 4, y muestra el
+Juan Esteban enuncia los puntos 1 y 2; Jhonjader, el 3 y el 4, y muestra el
 repositorio.
 
 1. La división ACID/BASE se sostiene con datos, no con opiniones.
@@ -195,7 +193,7 @@ repositorio.
 4. Una línea sobre lo ético: la seudonimización por UUID **no** es anonimización;
    15 horas de signos vitales atadas a un `uuid_admision` son reidentificables, y
    por eso la capa BASE necesita el mismo control de acceso que la ACID.
-5. (Juan Esteban) Mostrar el repositorio: `sql/`, `nosql/`, `scripts/`, `bench/resultados/`,
+5. (Jhonjader) Mostrar el repositorio: `sql/`, `nosql/`, `scripts/`, `bench/resultados/`,
    `docs/`. Mencionar que `scripts/ejecutar_todo.sh` reproduce todo de cero.
 
 ---
@@ -210,4 +208,4 @@ repositorio.
 - Dejar 20–30 segundos de margen: la rúbrica pide 8–10 minutos y un video de
   10:40 se penaliza.
 - Grabar los bloques por separado y unirlos; es más fácil que una toma única de
-  nueve minutos con tres personas.
+  nueve minutos.

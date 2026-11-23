@@ -4,7 +4,7 @@
 --  Subsistema: HOSPITALIZACIÓN  |  Capa ACID (PostgreSQL 16)
 --
 --  Institución Universitaria Pascual Bravo — Bases de Datos II
---  Equipo: Laura ⟨apellidos⟩, Jhon Jader Correa, Juan Esteban Castaño Montoya
+--  Equipo: Juan Esteban Castaño Montoya, Jhonjader Correa Ruiz
 --
 --  Archivo 01 de 05 — DDL: esquema, dominios, tablas, restricciones.
 --  Ejecutar:  psql -U postgres -d hce_antioquia -f sql/01_schema.sql

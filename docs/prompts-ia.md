@@ -2,7 +2,7 @@
 
 **Proyecto:** Arquitectura híbrida PostgreSQL + MongoDB — Unidad 3, Bases de Datos II
 **Herramienta:** Claude (modelo Opus 5), sesión de trabajo del 22 de noviembre de 2026
-**Equipo:** Laura ⟨apellidos⟩, Jhon Jader Correa, Juan Esteban Castaño Montoya
+**Equipo:** Juan Esteban Castaño Montoya, Jhonjader Correa Ruiz
 
 Este documento registra qué se le pidió a la IA, qué devolvió, **qué se aceptó y
 qué se rechazó**. El criterio del equipo fue tratar cada salida como una
