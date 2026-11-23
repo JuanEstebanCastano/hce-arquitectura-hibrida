@@ -842,7 +842,7 @@ pacientes.
 
 ---
 
-**Repositorio del proyecto:** ⟨URL de GitHub/GitLab del equipo⟩
+**Repositorio del proyecto:** https://github.com/JuanEstebanCastano/hce-arquitectura-hibrida
 
 **Reproducción de los resultados:** `bash scripts/ejecutar_todo.sh` levanta el
 escenario completo y regenera `bench/resultados/metricas.json`, los planes de

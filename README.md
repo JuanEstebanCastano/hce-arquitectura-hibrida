@@ -3,6 +3,8 @@
 **Unidad 3 · Bases de Datos II · Institución Universitaria Pascual Bravo**
 Equipo: Laura ⟨apellidos⟩ · Jhon Jader Correa · Juan Esteban Castaño Montoya
 
+Repositorio: https://github.com/JuanEstebanCastano/hce-arquitectura-hibrida
+
 Arquitectura de persistencia híbrida para el subsistema de hospitalización de la
 HCE Básica de la Red de Hospitales Públicos de la Gobernación de Antioquia. La
 identidad del paciente y la trazabilidad del acto asistencial viven en
@@ -172,14 +174,3 @@ imperfecta. Se explica en la sección 3.2 del informe.
   en `evidencias/09_benchmark.log`. Al reejecutar el benchmark varían unos pocos
   puntos porcentuales; las relaciones entre motores se mantienen. Si se vuelve a
   correr, conviene actualizar también las cifras citadas en el informe.
-
----
-
-## Pendientes antes de entregar
-
-- [ ] Completar los apellidos de Laura en `README.md`, `sql/01_schema.sql`, `docs/informe-tecnico.md`, `docs/prompts-ia.md` y `docs/guion-video.md` (marcados como `⟨apellidos⟩`).
-- [ ] Poner la URL del repositorio al final de `docs/informe-tecnico.md` (marcada como `⟨URL…⟩`).
-- [ ] Regenerar el PDF si se editó el informe: `cd docs && pandoc informe-tecnico.md -o informe-tecnico.pdf --pdf-engine=xelatex --toc`
-- [ ] Inicializar el repositorio y publicarlo: `git init && git add . && git commit -m "Unidad 3: arquitectura híbrida PostgreSQL + MongoDB"`, luego subirlo a GitHub/GitLab.
-- [ ] Grabar el video siguiendo `docs/guion-video.md`.
-- [ ] Añadir capturas de pantalla propias a `evidencias/` (los `.log` ya están).
